@@ -35,4 +35,30 @@ router.post('/',function (req,res) {
     }
 });
 
+router.put('/',function (req,res) {
+    if(!req.body.username || !req.body.password1 || !req.body.password2 ||
+        !req.body.email || !req.body.instagram) {
+        res.send('fill all the fields!');
+    } else {
+        if(req.body.password1!==req.body.password2){
+            res.send('two passwords doesn\'t match');
+        } else {
+            Admin.find(function (err, foundAdmin) {
+                if (!err) {
+                    Admin.findOneAndUpdate({_id: foundAdmin[0]._id},{
+                        username:req.body.username,
+                        password:req.body.password1,
+                        email:req.body.email,
+                        about:req.body.about,
+                        instagram:req.body.instagram
+                    }, function (err) {
+                        if(!err)
+                        res.redirect('/dashboard')
+                    })
+                }
+            })
+        }
+    }
+});
+
 module.exports = router;

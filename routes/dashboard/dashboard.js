@@ -2,6 +2,7 @@ var express = require('express'),
     router = express.Router(),
     PaintSet = require('../../moduls/paintSet'),
     Paint    = require('../../moduls/paint'),
+    Admin    = require('../../moduls/admin'),
     paintRouter = require('./paint'),
     paintSetRouter = require('./paintSet');
 
@@ -16,7 +17,10 @@ router.get('/',function (req,res) {
             Paint.find().populate('set').exec(function (err,paints) {
                 if(err){
                 } else {
-                    res.render('dashboard', {paintSets: paintSets, paints: paints});
+                    Admin.find(function (err, admin) {
+                        if(!err)
+                            res.render('dashboard', {paintSets: paintSets, paints: paints, admin: admin[0]});
+                    })
                 }
             });
         }

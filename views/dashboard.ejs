@@ -5,7 +5,7 @@
         <header>
             <div class="row no-gutters">
                 <div class="col-lg-4 col-md-6">
-                    <img id="img" src="img/img.png" class="w-100 h-100">
+                    <img id="img" src="static/pfpic.jpg" class="w-100 h-100">
                 </div>
                 <div class="col-lg-8 col-md-6" id="side-img-menu">
                     <div id="no-toolbar">
@@ -13,7 +13,7 @@
                             <tbody>
                             <tr>
                                 <td class="text-center">
-                                    <h1 class="d-lg-inline display-4 p-3">Akbar Zaheri</h1>
+                                    <h1 class="d-lg-inline display-4 p-3">Mehrnaz Mobini</h1>
                                 </td>
                             </tr>
                             </tbody>
@@ -21,8 +21,8 @@
                         <table id="middle" class="w-100">
                             <tbody>
                             <tr>
-                                <td class="bg-dark">
-                                    <p class="m-3">Experienced Paintgrapher</p>
+                                <td class="dark-brown">
+                                    <p class="m-3 text-white">Best Abstract Artist Ever</p>
                                 </td>
                             </tr>
                             </tbody>
@@ -31,19 +31,19 @@
                     <table id="toolbar" class="text-white w-100 h-100">
                         <tbody>
                         <tr class="text-center">
-                            <td class="bg-primary w-25 p-lg-3" data-toggle="collapse" data-target="#info" aria-expanded="true"
+                            <td class="brown w-25 p-lg-3" data-toggle="collapse" data-target="#info" aria-expanded="true"
                                 aria-controls="#info">
                                 <p class="lead">Info</p>
                             </td>
-                            <td class="bg-success w-25 p-lg-3" data-toggle="collapse" data-target="#new" aria-expanded="false" aria-controls="#new">
+                            <td class="text-white green w-25 p-lg-3" data-toggle="collapse" data-target="#new" aria-expanded="false" aria-controls="#new">
                                 <i class="fa fa-graduation-cap"></i>
                                 <p class="lead">New</p>
                             </td>
-                            <td class="bg-warning w-25 p-lg-3" data-toggle="collapse" data-target="#edit" aria-expanded="false" aria-controls="#edit">
+                            <td class="yellow w-25 p-lg-3" data-toggle="collapse" data-target="#edit" aria-expanded="false" aria-controls="#edit">
                                 <i class="fa fa-paint-brush"></i>
                                 <p class="lead">Edit</p>
                             </td>
-                            <td class="bg-danger w-25 p-lg-3" data-toggle="collapse" data-target="#delete" aria-expanded="false" aria-controls="#delete">
+                            <td class="bordeaux w-25 p-lg-3" data-toggle="collapse" data-target="#delete" aria-expanded="false" aria-controls="#delete">
                                 <i class="fa fa-envelope"></i>
                                 <p class="lead">Delete</p>
                             </td>
@@ -55,7 +55,7 @@
             </div>
         </header>
         <div id="info" class="collapse show w-100 bg-faded pr-1 pb-1" data-parent="#accordionExample" style="height: auto">
-            <div class="jumbotron text-white bg-primary mb-2">
+            <div class="jumbotron text-white brown mb-2">
                 <h1>How many posts do I have?</h1>
                 <p class="lead">See Analytics!</p>
             </div>
@@ -64,10 +64,61 @@
                 <hr>
                 <h1><span class="md-font">All Paints:</span><br><span class="xbig-font"><%=paints.length%></span></h1>
             </div>
+            <div id="settings" class="my-5 text-left">
+                <div class="container">
+                    <h1>Change Settings</h1>
+                    <form method="post" action="/admin?_method=PUT">
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" id="username" value="<%=admin.username%>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pass1" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password1" id="pass1" value="<%=admin.password%>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pass2" class="col-sm-2 col-form-label">Confirm Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password2" id="pass2" value="<%=admin.password%>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="email" id="email" value="<%= admin.email %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="instagram" class="col-sm-2 col-form-label">Instagram</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="instagram" id="instagram" value="<%= admin.instagram %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="about" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" id="about"
+                                          name="about" rows="7" cols="50"><%=admin.about%></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn yellow text-white float-right">Edit Collection</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
         </div>
 
         <div id="new" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
-            <div class="jumbotron text-white bg-success mb-2">
+            <div class="jumbotron text-white text-white green mb-2">
                 <h1>Add New Post</h1>
                 <p class="lead">Here you can add new posts to your gallery! :)</p>
             </div>
@@ -115,7 +166,7 @@
                         </div>
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-success float-right">Add To Paints!</button>
+                                <button type="submit" class="btn text-white green float-right">Add To Paints!</button>
                             </div>
                         </div>
                     </form>
@@ -156,7 +207,7 @@
 
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-success float-right">Add To Collections!</button>
+                                <button type="submit" class="btn text-white green float-right">Add To Collections!</button>
                             </div>
                         </div>
                     </form>
@@ -166,7 +217,7 @@
         </div>
 
         <div id="edit" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
-            <div class="jumbotron text-white bg-warning mb-2">
+            <div class="jumbotron text-white yellow mb-2">
                 <h1>Edit A Post</h1>
                 <p class="lead">Here you can edit an existing document from your gallery!</p>
             </div>
@@ -203,7 +254,7 @@
                         </div>
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
-                                <button type="submit" class="btn btn-warning text-white float-right">Edit Collection</button>
+                                <button type="submit" class="btn yellow text-white float-right">Edit Collection</button>
                             </div>
                         </div>
                     </form>
@@ -227,7 +278,7 @@
                                                 </div>
                                                 <div class="form-group row justify-content-end">
                                                     <div class="col-sm-10">
-                                                        <button type="submit" class="btn btn-warning text-white float-right">Edit Paint</button>
+                                                        <button type="submit" class="btn yellow text-white float-right">Edit Paint</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -244,7 +295,7 @@
         </div>
 
         <div id="delete" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
-            <div class="jumbotron text-white bg-danger mb-2">
+            <div class="jumbotron text-white bordeaux mb-2">
                 <h1>Delete A Post</h1>
                 <p class="lead">Here you can add remove posts from your gallery! :(</p>
             </div>
@@ -254,7 +305,7 @@
                     <div class="head-line mb-3">
                         <h1 class="mb-5 d-inline-block">Collection Name: <%= paintSets[iii].name%></h1>
                             <form method="post" action="/dashboard/paintSet/<%=paintSets[iii]._id%>?_method=DELETE">
-                                <button type="submit" class="btn btn-danger text-white float-right">Delete Entire Collection</button>
+                                <button type="submit" class="btn bordeaux text-white float-right">Delete Entire Collection</button>
                             </form>
                     </div>
                     <p>Paints:</p>
@@ -266,7 +317,7 @@
                                         <img class="card-img-top w-100" src="<%=paints[jj].image%>" alt="Card image cap">
                                         <div class="card-body text-center">
                                                 <form method="post" action="/dashboard/paint/<%=paints[jj]._id%>?_method=DELETE">
-                                                    <button type="submit" class="btn btn-danger text-white">Delete Paint</button>
+                                                    <button type="submit" class="btn bordeaux text-white">Delete Paint</button>
                                                 </form>
                                         </div>
                                     </div>

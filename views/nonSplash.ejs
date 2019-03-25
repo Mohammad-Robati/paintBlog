@@ -1,4 +1,4 @@
-<div class="nonSplash yellow">
+<div class="nonSplash yellow d-none">
     <div class="after-splash-content text-center container" style="padding-top: 12%">
         <h1 class="bold-font name-header">Mehrnaz Mobini</h1>
         <p class="md-font italic-font pt-5 quote-header">
@@ -7,46 +7,71 @@
         <div class="container pt-5 guguls">
             <div class="row justify-content-center">
                 <div class="col-md-3 col-sm-12" >
-                    <div class="gugul-1 green"></div>
+                    <div class="gugul-1 green">
+                        <img width="90%" src="static/gugulLeaf.png" alt="">
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-12" >
-                    <div class="gugul-3 brown"></div>
+                    <div class="gugul-3 brown">
+                        <img width="90%" src="static/gugulLeaf.png" alt="">
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-12" >
-                    <div class="gugul-2 bordeaux"></div>
+                    <div class="gugul-2 bordeaux">
+                        <img width="90%" src="static/gugulLeaf.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    <div class="splitter spacer-1-1"></div>
+    <div class="splitter spacer-1-1 ">
+        <div class="text-center container text-white italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quidem!</span>
+        </div>
+    </div>
     <div id="parallax1" class="parallaxParent">
         <div></div>
     </div>
-    <div class="splitter spacer-1-2"></div>
-    <div class="splitter spacer-2-1"></div>
+    <div class="splitter spacer-1-2">
+        <div class="text-center container text-dark italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quidem!</span>
+        </div>
+    </div>
+    <div class="splitter spacer-2-1">
+        <div class="text-center container text-dark italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quidem!</span>
+        </div>
+    </div>
     <div id="parallax2" class="parallaxParent">
         <div></div>
     </div>
-    <div class="splitter spacer-2-2"></div>
-    <div class="splitter spacer-3-1"></div>
+    <div class="splitter spacer-2-2">
+        <div class="text-center container text-white italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quidem!</span>
+        </div>
+    </div>
+    <div class="splitter spacer-3-1">
+        <div class="text-center container text-white italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, quidem!</span>
+        </div>
+    </div>
     <div id="parallax3" class="parallaxParent">
         <div></div>
     </div>
-    <div class="splitter spacer-3-2"></div>
-
-</div>
-
-
+    <div class="splitter spacer-3-2">
+        <div class="text-center container text-white italic-font sm-font mt-4 d-md-block d-none" data-aos="fade-in">
+            <span>And The Journey Begins...</span>
+        </div>
+    </div>
     <div id="pinContainer2" class="text-white text-center">
         <section class="panel2 dark-brown">
             <div style="position: relative">
+
+                     <img src="static/neon.gif" class="neon" alt="">
+                     <img src="static/door-close.png" id="myimg" style="z-index: 0;" class="door pb-5"><br>
                 <div id="target" data-aos="fade-in">
                     <img id="plane" width="100px" style="position: absolute;left: 0;top: 50px;z-index: 10" src="static/leaf.png">
                 </div>
-                     <img src="static/neon.gif" class="neon" alt="">
-                     <img src="static/door-close.png" id="myimg" style="z-index: 0;" class="door pb-5"><br>
             </div>
         </section>
         <p id="paintSets" class="d-none"> <%=paintSets%> </p>
@@ -69,7 +94,7 @@
                 <div class="room-name pt-5 d-none d-lg-block">
                     <div class="row justify-content-start bold-font text-white text-center">
                         <div class="col-md-2">
-                            <h3>ROOM<%=i%></h3>
+                            <h3>ROOM<%=j%></h3>
                             <hr class="bg-white w-100">
                             <h4><%=paintSets[i].name%></h4>
                         </div>
@@ -77,12 +102,25 @@
                 </div>
                 <img src="static/canvas.png" class="canvas pb-5">
                 <div class="carousel-caption carousel-caption-<%=i%> text-white container">
-                    <h2 class="bold-font"><%=paintings[0].name%></h2>
-                    <hr class="w-25 bg-white">
-                    <p class="italic-font"><%=paintings[0].caption%></p>
-                </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="bold-font"><%=paintings[0].name%></h2>
+                            <hr class="w-25 bg-white">
+                            <p class="italic-font"><%=paintings[0].caption%></p>
+                        </div>
+                    </div>
+                    </div>
                 <div id="carouselExampleControls<%=i%>" class="carousel slide in-canvas" data-ride="carousel">
                     <div class="carousel-inner">
+                        <ol class="carousel-indicators">
+                            <% for(var p=0;p<paintings.length;p++) { %>
+                                   <% if(p===0) { %>
+                            <li data-target="#carouselExampleControls<%=i%>" data-slide-to=<%=p%> class="active"></li>
+                                    <% } else { %>
+                            <li data-target="#carouselExampleControls<%=i%>" data-slide-to=<%=p%> ></li>
+                                     <% } %>
+                            <% } %>
+                        </ol>
                         <% for(var t=0;t<paintings.length;t++) { %>
                             <% if(t===0) { %>
                             <div class="carousel-item fitter active">
@@ -96,11 +134,11 @@
                         <% } %>
                     </div>
 
-                    <a class="carousel-control-prev" href="#carouselExampleControls<%=i%>" role="button" data-slide="prev">
+                    <a class="carousel-control-prev d-none" href="#carouselExampleControls<%=i%>" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls<%=i%>" role="button" data-slide="next">
+                    <a class="carousel-control-next d-none" href="#carouselExampleControls<%=i%>" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -113,24 +151,18 @@
     <section id="salam" class="green text-center" style="min-height: 830px;position: relative" >
         <div class="container" style="padding-top: 40px">
             <div class="row text-center pb-5" style="padding-top: 100px">
-                <div class="col-md-8 col-sm 12 text-white" data-aos="fade-right" data-aos-duration="1000">
+                <div class="col-md-8 col-sm 12 text-white" data-aos="fade-right" >
                     <h1 class="xbig-font">About</h1>
                     <br>
                     <div class="container">
                         <p class="md-font text-break pb-5">
-                            I am who I am :|
-                        <ul class="text-left ml-5">
-                            <li>Photographers Gallery Exhibitions 2017 (Genova, Italy)</li>
-                            <li>Photographers Gallery Exhibitions 2017 (Seoul, South Korea)</li>
-                            <li>Photographers Gallery Exhibitions 2018 (Sorbonne Université, France)</li>
-                            <li>Running work-shop events since 2016</li>
-                        </ul>
+                            <%=details.about%>
                         </p>
                     </div>
 
                 </div>
                 <br>
-                <div class="col-md-4 col-sm-12" style="padding-top: 25px;padding-bottom: 150px" data-aos="fade-left" data-aos-duration="1000">
+                <div class="col-md-4 col-sm-12" style="padding-top: 25px;padding-bottom: 150px" data-aos="fade-left">
                     <div class="card yellow pb-5">
                         <div class="card-block">
                             <div class="container">
@@ -140,17 +172,17 @@
                                 <form>
                                     <label for="instagram">Instagram</label>
                                     <div class="input-group input-group-lg">
-                                        <div class="form-control" readonly>
-                                            <a id="instagram" class="text-dark" href="https://www.instagram.com/_mehrnaz.mobini_">
-                                                @_mehrnaz.mobini_
+                                        <div class="bg-light p-3 w-100 sm-font" style="border-radius: 2%">
+                                            <a id="instagram" class="text-dark" target="_blank" href="https://www.instagram.com/<%=details.instagram%>">
+                                                @<%=details.instagram%>
                                             </a>
                                         </div>
                                     </div>
                                     <br>
                                     <label for="email">Email </label>
                                     <div class="input-group input-group-lg">
-                                        <div class="form-control" readonly>
-                                            <a class="text-dark" href="mailto:mm2008@email.com">mm2008@email.com</a>
+                                        <div class="bg-light p-3 w-100 sm-font" style="border-radius: 2%">
+                                            <a class="text-dark" target="_blank" href="mailto:<%=details.email%>"><%=details.email%></a>
                                         </div>
                                     </div>
                                     <br>
@@ -163,7 +195,7 @@
             </div>
         </div>
         <div class="dark-brown text-white text-center w-100" style="height: 150px;bottom: 0;position: absolute">
-            <p class="pt-5">Made By @Zosoist <br> Copyright © 2019</p>
+            <p class="pt-5">Made By <a target="_blank" href="https://www.instagram.com/zosoist">@Zosoist</a> <br> Copyright © 2019</p>
         </div>
     </section>
 

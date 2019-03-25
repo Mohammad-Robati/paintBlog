@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require('path');
 var PaintSet = require('../../moduls/paintSet');
 var Paint = require('../../moduls/paint');
+var Admin = require('../../moduls/admin');
 
 router.get('/', function(req, res) {
     PaintSet.find(function (err,paintSets) {
@@ -10,7 +11,19 @@ router.get('/', function(req, res) {
         else {
             Paint.find(function (err,paints) {
                 if(err) res.send(err);
-                else res.render('index',{paintSets:JSON.stringify(paintSets) , paints:JSON.stringify(paints)});
+                else {
+                    Admin.find(function (err,admin) {
+                        if(!err) {
+                            res.render('index',{paintSets:JSON.stringify(paintSets) ,
+                                paints:JSON.stringify(paints), details: {
+                                    about: admin[0].about,
+                                    instagram: admin[0].instagram,
+                                    email: admin[0].email
+                                }
+                            });
+                        }
+                    })
+                }
             })
         }
     });

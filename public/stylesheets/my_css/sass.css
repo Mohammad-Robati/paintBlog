@@ -10,7 +10,8 @@
   margin-left: 5px;
   animation: roll 3s infinite;
   transform: rotate(30deg);
-  opacity: 1; }
+  opacity: 1; 
+}
 
 .gugul-2 {
   display: inline-block;

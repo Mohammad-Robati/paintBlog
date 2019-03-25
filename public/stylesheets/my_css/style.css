@@ -1,5 +1,5 @@
 .sec {
-    background-image: url('../../static/1.png');
+    background-image: url('../../static/8.jpg');
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
@@ -17,6 +17,33 @@
     border: 0;
     cursor: pointer;
 
+}
+
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0.4; }
+    100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0.6; }
+    100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0.6; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0.6; }
+    100% { opacity:1; }
+}
+.animate-flicker {
+    -webkit-animation: flickerAnimation 2s infinite;
+    -moz-animation: flickerAnimation 2s infinite;
+    -o-animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 2s infinite;
 }
 
 .outer {
@@ -60,20 +87,20 @@
 
 .name-header {
     font-size: 100px;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 2s ease-in-out;
 }
 
 .quote-header {
-    opacity: 1;
+    opacity: 0;
     transition: opacity 2s ease-in-out;
 }
 
 .guguls {
-    opacity: 1;
+    opacity: 0;
     transition: opacity 2s ease-in-out;
     margin-top: 20px;
-    padding-bottom: 40px;
+    padding-bottom: 120px;
 }
 
 .gugul-2 {
@@ -81,8 +108,8 @@
 }
 
 .gugul-3 {
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .opacityPlus {
@@ -206,6 +233,9 @@
     background-color: #c7ba37;
 }
 
+.light-yellow {
+    background-color: #d8d791; }
+
 .green {
     background-color: #606741;
 }
@@ -225,8 +255,7 @@
     color: white;
     text-align: center; }
 
-.imageRed {
-    background: red; }
+
 
 .imageGreen {
     background: green; }
@@ -303,4 +332,8 @@ hr .room-name {
     top:7%;
     left: 0;
     right: 0;
+}
+
+.jumbotron {
+    margin-right: -4px;
 }

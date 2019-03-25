@@ -5,16 +5,19 @@ var mongoose = require('mongoose'),
 var seedDB = function() {
     mongoose.connect('mongodb://localhost/paint_blog');
 
-    //mongoose.connection.dropDatabase();
+    /*mongoose.connection.dropDatabase();
 
     Admin.create({
-        username: "akbar.bazoft",
-        password: "7dPapD9s"
+        username: "sitra.ahra",
+        password: "7dPapD9s",
+        email: "mm2008@gmail.com",
+        instagram: "_mehrnaz.mobini_",
+        about: "I am who I am :|"
     },function (err,createdAdmin) {
         createdAdmin.save(function (err) {
             if(err) console.log(err);
         })
-    });
+    });*/
 
 };
 

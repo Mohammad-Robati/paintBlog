@@ -1,6 +1,18 @@
+try {
+    checkForScreen();
+    $(window).resize(function () {
+        checkForScreen();
+    });
+
+    function checkForScreen() {
+        $('#toolbar').css('max-height', $('.no-gutters').height() - $('#no-toolbar').height() + 1);
+    }
+} catch (e) {
+
+}
+
 var paintSets = JSON.parse($('#paintSets').text());
 var paints = JSON.parse($('#paints').text());
-
 
 
 try {
@@ -17,11 +29,11 @@ $(document).click(function (e) {
     if ($el.hasClass('clickme')) {
         if(!clicked) {
             $(".circle_s").toggleClass('sizePlus');
-            clicked = true
+            clicked = true;
             $(".inner").addClass('bg-danger');
-            $(".middle").removeClass('bg-danger');
+            $(".middle").removeClass('bg-danger').removeClass('animate-flicker');
             $(".outer").removeClass('bg-danger');
-            /*setInterval(function () {
+            setInterval(function () {
                 $(".sec").remove();
                 $(".nonSplash").removeClass('d-none');
                 setInterval(function () {
@@ -33,7 +45,7 @@ $(document).click(function (e) {
                         },700)
                     }, 700)
                 },700);
-            },3500);*/
+            },3500);
         }
     } else {
         $(".circle_s").removeClass('sizePlus');
@@ -170,7 +182,7 @@ $(function () { // wait for document ready
         .add(TweenMax.to($("#plane"), 1, {css:{bezier:flightpath.leave}, ease:Power1.easeInOut}));
 
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2100})
+    var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2200})
         .setPin("#target")
         .setTween(tween)
         .addTo(controller);
@@ -204,7 +216,7 @@ var tween = TweenMax.to(obj, 0.5,
 var controller = new ScrollMagic.Controller();
 
 // build scene
-var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2000})
+var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2100})
     .setTween(tween)
     .addTo(controller);
 
@@ -232,7 +244,7 @@ for(let i=0;i<paintSets.length;i++) {
 }
 
 for(let j=0;j<paintSets.length;j++) {
-    document.getElementsByClassName('bg'+i).style.backgroundColor = paintSets[j].color;
+    document.getElementsByClassName('bg'+j).style.backgroundColor = paintSets[j].color;
 }
 
 
