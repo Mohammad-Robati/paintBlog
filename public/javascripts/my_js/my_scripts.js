@@ -1,3 +1,8 @@
+var paintSets = JSON.parse($('#paintSets').text());
+var paints = JSON.parse($('#paints').text());
+
+
+
 try {
     AOS.init();
     var rellax = new Rellax('.rellax');
@@ -101,16 +106,20 @@ $(function () {
 
     var controller = new ScrollMagic.Controller();
 
+    var timelineMax = new TimelineMax();
+    for(var i=0;i<paintSets.length;i++) {
+        timelineMax.from("section.panel2.room" + i, 1, {xPercent: 100});
+    }
+
+
     new ScrollMagic.Scene({
         triggerElement: "#pinContainer2",
         triggerHook: "onLeave",
         duration: "300%"
     })
         .setPin("#pinContainer2")
-        .setTween((new TimelineMax)
-            .from("section.panel2.room1",1,{xPercent: 100})
-            .from("section.panel2.room2",1,{xPercent: 100})
-            .from("section.panel2.room3",1,{xPercent: 100})
+        .setTween(
+            timelineMax
         )
         .addTo(controller);
 
@@ -161,7 +170,7 @@ $(function () { // wait for document ready
         .add(TweenMax.to($("#plane"), 1, {css:{bezier:flightpath.leave}, ease:Power1.easeInOut}));
 
     // build scene
-    var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2300})
+    var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2100})
         .setPin("#target")
         .setTween(tween)
         .addTo(controller);
@@ -195,7 +204,7 @@ var tween = TweenMax.to(obj, 0.5,
 var controller = new ScrollMagic.Controller();
 
 // build scene
-var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2100})
+var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 300, offset: 2000})
     .setTween(tween)
     .addTo(controller);
 
@@ -204,11 +213,31 @@ $("form.move input[name=duration]:radio").change(function () {
     scene.duration($(this).val());
 });
 
-var caps = ['Dark', 'White', 'Turkos'];
 
-$('#carouselExampleControls0').on('slide.bs.carousel', function () {
-    var index = $('#carouselExampleControls0 .active').index('#carouselExampleControls0 .carousel-item');
-    $('.carousel-caption h2').text(caps[index]);
 
-});
+for(let i=0;i<paintSets.length;i++) {
+    let titles = [];
+    let caps = [];
+    let holyObject = {};
+    for (let k = 0; k < paints.length; k++) {
+        if (paints[k].set === paintSets[i]._id) {
+            holyObject[paints[k].image] = {name: paints[k].name, caption: paints[k].caption}
+        }
+    }
+    $('#carouselExampleControls'+i).on('slid.bs.carousel',function(){
+        let src = $('#carouselExampleControls'+i+' .active img').attr('src');
+        $('.carousel-caption-'+i+' h2').text(holyObject[src].name);
+        $('.carousel-caption-'+i+' p').text(holyObject[src].caption);
+    });
+}
+
+for(let j=0;j<paintSets.length;j++) {
+    document.getElementsByClassName('bg'+i).style.backgroundColor = paintSets[j].color;
+}
+
+
+
+
+
+
 

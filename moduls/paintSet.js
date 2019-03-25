@@ -5,6 +5,7 @@ var paintSetSchema = mongoose.Schema({
     date: String,
     location: String,
     description: String,
-    thumbnail: String
+    thumbnail: String,
+    color: String
 });
 module.exports = mongoose.model("PaintSet", paintSetSchema);

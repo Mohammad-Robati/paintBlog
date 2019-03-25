@@ -8,15 +8,14 @@ var fs = require('fs');
 var rimraf = require("rimraf");
 
 router.post('/paintSet',function (req,res) {
-    console.log(req.body);
-    if(!req.body.name || !req.body.description || !req.body.location || !req.body.date) {
+    if(!req.body.name) {
         res.send('no data');
     } else {
         PaintSet.create({
             name: req.body.name,
             description : req.body.description,
-            location : req.body.location,
-            date : req.body.date
+            date : req.body.date,
+            color: req.body.color
         }, function (err, paintSetCreated) {
             if(err){
                 console.log(err);
@@ -43,7 +42,7 @@ router.put('/paintSet/:id',function (req,res) {
     PaintSet.findOneAndUpdate({_id:req.params.id},{
         name: req.body.name,
         description: req.body.description,
-        location: req.body.location,
+        color: req.body.color,
         date : req.body.date
     },function (err) {
         if(err) res.send(err);

@@ -300,7 +300,7 @@ hr .room-name {
 
 .carousel-caption {
     position: absolute;
+    top:7%;
     left: 0;
     right: 0;
-    top:7%;
 }

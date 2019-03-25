@@ -139,10 +139,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="paint-set-location" class="col-sm-2 col-form-label">Location</label>
+                            <label for="paint-set-color" class="col-sm-2 col-form-label">Color</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                       name="location" id="paint-set-location" placeholder="Location">
+                                       name="color" id="paint-set-color" placeholder="Color(in this form ex. #f7f7f7)">
                             </div>
                         </div>
 
@@ -178,11 +178,7 @@
                         <div class="form-group row">
                             <label for="paint-set-name" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
-                                <% if(paintSets[ii].name==='Single Shots') { %>
-                                <input type="text" class="form-control" name="name" id="paint-set-name" value="<%= paintSets[ii].name%>" readonly>
-                                <% } else { %>
                                 <input type="text" class="form-control" name="name" id="paint-set-name" value="<%= paintSets[ii].name%>">
-                                <% } %>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -192,11 +188,10 @@
                                           rows="7" cols="50"><%= paintSets[ii].description %> </textarea>
                             </div>
                         </div>
-                        <% if(paintSets[ii].name!=='Single Shots') { %>
                         <div class="form-group row">
-                            <label for="paint-set-location" class="col-sm-2 col-form-label">Location</label>
+                            <label for="paint-set-color" class="col-sm-2 col-form-label">Color</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="location" id="paint-set-location" value="<%= paintSets[ii].location %>">
+                                <input type="text" class="form-control" name="color" id="paint-set-color" value="<%= paintSets[ii].color %>">
                             </div>
                         </div>
 
@@ -206,7 +201,6 @@
                                 <input type="text" class="form-control" name="date" id="paint-set-date" value="<%= paintSets[ii].date %>">
                             </div>
                         </div>
-                        <% } %>
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
                                 <button type="submit" class="btn btn-warning text-white float-right">Edit Collection</button>
@@ -218,7 +212,7 @@
                         <% for(var j=0;j<paints.length;j++) { %>
                              <% if(paints[j].set.name === paintSets[ii].name) { %>
                                 <div class="col-md-3 col-sm-12">
-                                    <div class="card" >
+                                    <div class="card mb-5" >
                                         <img class="card-img-top w-100" src="<%= paints[j].image %>" alt="Card image cap">
                                         <div class="card-body">
                                             <form method="post" action="/dashboard/paint/<%=paints[j]._id%>?_method=PUT">
@@ -259,11 +253,9 @@
                     <div class="collection">
                     <div class="head-line mb-3">
                         <h1 class="mb-5 d-inline-block">Collection Name: <%= paintSets[iii].name%></h1>
-                            <% if(paintSets[iii].name!=='Single Shots') { %>
-                                <form method="post" action="/dashboard/paintSet/<%=paintSets[iii]._id%>?_method=DELETE">
-                                    <button type="submit" class="btn btn-danger text-white float-right">Delete Entire Collection</button>
-                                </form>
-                            <% } %>
+                            <form method="post" action="/dashboard/paintSet/<%=paintSets[iii]._id%>?_method=DELETE">
+                                <button type="submit" class="btn btn-danger text-white float-right">Delete Entire Collection</button>
+                            </form>
                     </div>
                     <p>Paints:</p>
                     <div class="row">

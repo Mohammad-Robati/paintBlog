@@ -12,7 +12,7 @@ router.post('/paint',function (req,res) {
         res.send('no file');
     } else {
         var file = req.files.file;
-        var extension = path.extname(file.name);
+        var extension = path.extname(file.name).toLowerCase();
         if(extension !== '.png' && extension !== '.jpg' && extension !== '.jpeg') {
             res.send('no image');
         } else {

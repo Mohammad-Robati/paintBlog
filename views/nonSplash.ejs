@@ -46,124 +46,68 @@
                     <img id="plane" width="100px" style="position: absolute;left: 0;top: 50px;z-index: 10" src="static/leaf.png">
                 </div>
                      <img src="static/neon.gif" class="neon" alt="">
-                    <img src="static/door-close.png" id="myimg" style="z-index: 0;" class="door pb-5"><br>
-
-
-
+                     <img src="static/door-close.png" id="myimg" style="z-index: 0;" class="door pb-5"><br>
             </div>
         </section>
-        <section class="panel2 room1 bordeaux">
+        <p id="paintSets" class="d-none"> <%=paintSets%> </p>
+        <p id="paints" class="d-none"> <%=paints%> </p>
+        <% paintSets = JSON.parse(paintSets) %>
+        <% paints = JSON.parse(paints) %>
+        <% var paintings = []; %>
+        <% for(var i=0;i<paintSets.length;i++) { %>
+        <%
+                paintings = []
+                var j = i+1;
+                for(var k=0;k<paints.length;k++) {
+                    if(paints[k].set === paintSets[i]._id) {
+                        paintings.push(paints[k]);
+                    }
+                }
+        %>
+            <section class="panel2 room<%=i%> bg<%=i%>" style="background-color: <%=paintSets[i].color%>">
             <div class="container">
                 <div class="room-name pt-5 d-none d-lg-block">
                     <div class="row justify-content-start bold-font text-white text-center">
                         <div class="col-md-2">
-                            <h3>ROOM1</h3>
+                            <h3>ROOM<%=i%></h3>
                             <hr class="bg-white w-100">
-                            <h4>Autumn</h4>
+                            <h4><%=paintSets[i].name%></h4>
                         </div>
                     </div>
                 </div>
                 <img src="static/canvas.png" class="canvas pb-5">
-                <div class="carousel-caption carousel-caption-0 text-white container" >
-                    <h2 class="bold-font">Song of heaven</h2>
+                <div class="carousel-caption carousel-caption-<%=i%> text-white container">
+                    <h2 class="bold-font"><%=paintings[0].name%></h2>
                     <hr class="w-25 bg-white">
-                    <p class="italic-font">nsectetur adipisicing el ea ipsa iste iure Lorem ipsum dolor sit.
-                        laboriosam quas tempore voluptate.</p>
+                    <p class="italic-font"><%=paintings[0].caption%></p>
                 </div>
-                <div id="carouselExampleControls0" class="carousel slide in-canvas" data-ride="carousel">
+                <div id="carouselExampleControls<%=i%>" class="carousel slide in-canvas" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item fitter active">
-                            <img src="static/5.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/6.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/7.jpg" class="d-block" alt="...">
-                        </div>
+                        <% for(var t=0;t<paintings.length;t++) { %>
+                            <% if(t===0) { %>
+                            <div class="carousel-item fitter active">
+                                <img src="<%=paintings[t].image%>" class="d-block" alt="...">
+                            </div>
+                            <% } else { %>
+                            <div class="carousel-item fitter">
+                                    <img src="<%=paintings[t].image%>" class="d-block" alt="...">
+                            </div>
+                            <% } %>
+                        <% } %>
                     </div>
 
-                    <a class="carousel-control-prev" href="#carouselExampleControls0" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleControls<%=i%>" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls0" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleControls<%=i%>" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
             </div>
         </section>
-        <section class="panel2 room2 turqoise">
-            <div class="container">
-                <div class="room-name pt-5 d-none d-lg-block">
-                    <div class="row justify-content-start bold-font text-white text-center">
-                        <div class="col-md-2">
-                            <h3>ROOM2</h3>
-                            <hr class="bg-white w-100">
-                            <h4>Winter</h4>
-                        </div>
-                    </div>
-                </div>
-                <img src="static/canvas.png" class="canvas pb-5">
-                <div id="carouselExampleControls1" class="carousel slide in-canvas" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item fitter active">
-                            <img src="static/8.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/9.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/10.jpg" class="d-block" alt="...">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section class="panel2 room3 yellow">
-            <div class="container">
-                <div class="room-name pt-5 d-none d-lg-block">
-                    <div class="row justify-content-start bold-font text-dark text-center">
-                        <div class="col-md-2">
-                            <h3>ROOM3</h3>
-                            <hr class="bg-dark w-100">
-                            <h4>Spring</h4>
-                        </div>
-                    </div>
-                </div>
-                <img src="static/canvas.png" class="canvas pb-5">
-                <div id="carouselExampleControls2" class="carousel slide in-canvas" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item fitter active">
-                            <img src="static/1.png" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/3.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item fitter">
-                            <img src="static/4.jpg" class="d-block" alt="...">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+        <% } %>
     </div>
 
     <section id="salam" class="green text-center" style="min-height: 830px;position: relative" >
