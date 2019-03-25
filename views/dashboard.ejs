@@ -1,0 +1,297 @@
+<% include ./partials/header.ejs%>
+
+<div class="accordion" id="accordionExample">
+    <div class="container">
+        <header>
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-md-6">
+                    <img id="img" src="img/img.png" class="w-100 h-100">
+                </div>
+                <div class="col-lg-8 col-md-6" id="side-img-menu">
+                    <div id="no-toolbar">
+                        <table id="info-table" class="table-inverse w-100">
+                            <tbody>
+                            <tr>
+                                <td class="text-center">
+                                    <h1 class="d-lg-inline display-4 p-3">Akbar Zaheri</h1>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <table id="middle" class="w-100">
+                            <tbody>
+                            <tr>
+                                <td class="bg-dark">
+                                    <p class="m-3">Experienced Paintgrapher</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <table id="toolbar" class="text-white w-100 h-100">
+                        <tbody>
+                        <tr class="text-center">
+                            <td class="bg-primary w-25 p-lg-3" data-toggle="collapse" data-target="#info" aria-expanded="true"
+                                aria-controls="#info">
+                                <p class="lead">Info</p>
+                            </td>
+                            <td class="bg-success w-25 p-lg-3" data-toggle="collapse" data-target="#new" aria-expanded="false" aria-controls="#new">
+                                <i class="fa fa-graduation-cap"></i>
+                                <p class="lead">New</p>
+                            </td>
+                            <td class="bg-warning w-25 p-lg-3" data-toggle="collapse" data-target="#edit" aria-expanded="false" aria-controls="#edit">
+                                <i class="fa fa-paint-brush"></i>
+                                <p class="lead">Edit</p>
+                            </td>
+                            <td class="bg-danger w-25 p-lg-3" data-toggle="collapse" data-target="#delete" aria-expanded="false" aria-controls="#delete">
+                                <i class="fa fa-envelope"></i>
+                                <p class="lead">Delete</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </header>
+        <div id="info" class="collapse show w-100 bg-faded pr-1 pb-1" data-parent="#accordionExample" style="height: auto">
+            <div class="jumbotron text-white bg-primary mb-2">
+                <h1>How many posts do I have?</h1>
+                <p class="lead">See Analytics!</p>
+            </div>
+            <div id="analytics" class="my-5 text-center">
+                <h1><span class="md-font">All Collections:</span><br><span class="xbig-font"><%=paintSets.length%></span></h1>
+                <hr>
+                <h1><span class="md-font">All Paints:</span><br><span class="xbig-font"><%=paints.length%></span></h1>
+            </div>
+        </div>
+
+        <div id="new" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
+            <div class="jumbotron text-white bg-success mb-2">
+                <h1>Add New Post</h1>
+                <p class="lead">Here you can add new posts to your gallery! :)</p>
+            </div>
+            <div id="new-post-body" class="row my-5">
+                <div class="col-md-6 col-sm-12 border-right mb-5">
+                    <h1 class="mb-5">Add New Paint:</h1>
+                    <form enctype="multipart/form-data" action="/dashboard/paint" method="post">
+                        <div class="form-group row">
+                            <label for="paint-image" class="col-sm-2 col-form-label">Paint</label>
+                            <div class="col-sm-10">
+<!--
+                                <input type="file" name="file" class="filepond" id="paint-image">
+-->
+                                <input type="file" name="file">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="paint-title" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="paint-title" placeholder="Paint Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="paint-caption" class="col-sm-2 col-form-label">Caption</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" id="paint-set-caption"
+                                       name="caption" rows="4" cols="50" placeholder="Paint Caption"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="paint-collection" class="col-sm-2 col-form-label">Collection</label>
+                            <div class="col-sm-10">
+                                <select name="set" class="custom-select form-control" id="paint-collection">
+                                    <% for(var i=0;i<paintSets.length;i++) { %>
+                                         <% if(i==0) { %>
+                                    <option selected value="<%= paintSets[i].name %>"><%= paintSets[i].name %></option>
+                                         <% } else { %>
+                                    <option  value="<%= paintSets[i].name %>"><%= paintSets[i].name %></option>
+
+                                         <% } %>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-success float-right">Add To Paints!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <h1 class="mb-5">Add New Paint Collection:</h1>
+                    <form action="/dashboard/paintSet" method="post">
+                        <div class="form-group row">
+                            <label for="paint-set-name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="paint-set-name"
+                                       name="name" placeholder="Paint Collection Name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="paint-set-description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" class="form-control" id="paint-set-description"
+                                  name="description" rows="7" cols="50" placeholder="Paint Collection Description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="paint-set-location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="location" id="paint-set-location" placeholder="Location">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="paint-set-date" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"
+                                       name="date" id="paint-set-date" placeholder="Date">
+                            </div>
+                        </div>
+
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-success float-right">Add To Collections!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="edit" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
+            <div class="jumbotron text-white bg-warning mb-2">
+                <h1>Edit A Post</h1>
+                <p class="lead">Here you can edit an existing document from your gallery!</p>
+            </div>
+            <div class="edit-post-body my-5">
+                <% for(var ii=0;ii<paintSets.length;ii++) { %>
+                <div class="collection">
+                    <h1 class="mb-5">Collection Name: <%= paintSets[ii].name%></h1>
+                    <form method="post" action="/dashboard/paintSet/<%= paintSets[ii]._id%>?_method=PUT">
+                        <div class="form-group row">
+                            <label for="paint-set-name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <% if(paintSets[ii].name==='Single Shots') { %>
+                                <input type="text" class="form-control" name="name" id="paint-set-name" value="<%= paintSets[ii].name%>" readonly>
+                                <% } else { %>
+                                <input type="text" class="form-control" name="name" id="paint-set-name" value="<%= paintSets[ii].name%>">
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="paint-set-description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <textarea type="text" name="description" class="form-control" id="paint-set-description"
+                                          rows="7" cols="50"><%= paintSets[ii].description %> </textarea>
+                            </div>
+                        </div>
+                        <% if(paintSets[ii].name!=='Single Shots') { %>
+                        <div class="form-group row">
+                            <label for="paint-set-location" class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="location" id="paint-set-location" value="<%= paintSets[ii].location %>">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="paint-set-date" class="col-sm-2 col-form-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="date" id="paint-set-date" value="<%= paintSets[ii].date %>">
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="form-group row justify-content-end">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-warning text-white float-right">Edit Collection</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p>Paints:</p>
+                    <div class="row">
+                        <% for(var j=0;j<paints.length;j++) { %>
+                             <% if(paints[j].set.name === paintSets[ii].name) { %>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="card" >
+                                        <img class="card-img-top w-100" src="<%= paints[j].image %>" alt="Card image cap">
+                                        <div class="card-body">
+                                            <form method="post" action="/dashboard/paint/<%=paints[j]._id%>?_method=PUT">
+                                                <div class="form-group">
+                                                    <label for="paint-title">Title</label>
+                                                    <input type="text" name="name" class="form-control" id="paint-title" value="<%=paints[j].name %>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="paint-caption">Caption</label>
+                                                    <textarea name="caption" type="text" class="form-control" id="paint-set-caption"
+                                                              rows="4" cols="50"><%= paints[j].caption%></textarea>
+                                                </div>
+                                                <div class="form-group row justify-content-end">
+                                                    <div class="col-sm-10">
+                                                        <button type="submit" class="btn btn-warning text-white float-right">Edit Paint</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                             <% } %>
+                        <% } %>
+                    </div>
+                    <hr>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div id="delete" class="collapse w-100 bg-faded pr-1 pb-3" data-parent="#accordionExample" style="height: auto">
+            <div class="jumbotron text-white bg-danger mb-2">
+                <h1>Delete A Post</h1>
+                <p class="lead">Here you can add remove posts from your gallery! :(</p>
+            </div>
+            <div class="delete-post-body my-5">
+                <% for(var iii=0;iii<paintSets.length;iii++) { %>
+                    <div class="collection">
+                    <div class="head-line mb-3">
+                        <h1 class="mb-5 d-inline-block">Collection Name: <%= paintSets[iii].name%></h1>
+                            <% if(paintSets[iii].name!=='Single Shots') { %>
+                                <form method="post" action="/dashboard/paintSet/<%=paintSets[iii]._id%>?_method=DELETE">
+                                    <button type="submit" class="btn btn-danger text-white float-right">Delete Entire Collection</button>
+                                </form>
+                            <% } %>
+                    </div>
+                    <p>Paints:</p>
+                    <div class="row">
+                        <% for(var jj=0;jj<paints.length;jj++) { %>
+                            <% if(paints[jj].set.name === paintSets[iii].name) { %>
+                                <div class="col-md-3 col-sm-12 mb-3">
+                                    <div class="card" >
+                                        <img class="card-img-top w-100" src="<%=paints[jj].image%>" alt="Card image cap">
+                                        <div class="card-body text-center">
+                                                <form method="post" action="/dashboard/paint/<%=paints[jj]._id%>?_method=DELETE">
+                                                    <button type="submit" class="btn btn-danger text-white">Delete Paint</button>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <hr>
+                    <hr>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<% include ./partials/footer.ejs%>
+

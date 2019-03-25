@@ -1,0 +1,306 @@
+.sec {
+    background-image: url('../../static/1.png');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    transition: all 4s linear;
+}
+
+.circle_s {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -10%;
+    right: -10%;
+    margin: auto;
+    border: 0;
+    cursor: pointer;
+
+}
+
+.outer {
+    height: 350px;
+    width: 350px;
+    transition: all 1.3s  ease-in-out;
+}
+
+.middle {
+    height: 250px;
+    width: 250px;
+    transition: all 2s  ease-in-out;
+
+}
+
+.inner {
+    height: 190px;
+    width: 190px;
+    transition: all 3s  ease-in-out;
+
+}
+
+.sizePlus{
+    height: 4000px;
+    width: 4000px;
+}
+
+
+.nonSplash {
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+
+.after-splash-content {
+    border-left: dotted;
+    border-right: dotted;
+    border-width: 10px;
+}
+
+.name-header {
+    font-size: 100px;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.quote-header {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+}
+
+.guguls {
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+.gugul-2 {
+    margin-bottom: 30px;
+}
+
+.gugul-3 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.opacityPlus {
+    opacity: 1;
+}
+
+#parallax1 div {
+    background-image: url("../../static/8.jpg");
+    background-size: cover;
+}
+
+#parallax2 div {
+    background-image: url("../../static/13.jpg");
+    background-size: cover;
+
+}
+
+#parallax3 div {
+    background-image: url("../../static/15.jpg");
+    background-size: cover;
+}
+
+.splitter {
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 10px;
+}
+
+.spacer-1-1 {
+    height: 100px;
+    background-color: #537c7c;
+}
+.spacer-1-2 {
+    height: 100px;
+    background-color: #d8d791;
+}
+
+.spacer-2-1 {
+    height: 100px;
+    background-color: #eddabd;
+}
+
+.spacer-2-2 {
+    height: 100px;
+    background-color: #552f1d;
+}
+
+.spacer-3-1 {
+    height: 100px;
+    background-color: #be5312;
+}
+
+.spacer-3-2 {
+    height: 100px;
+    background-color: #5a0006;
+}
+
+
+#placeholder1 {
+    height: 100vh;
+    background-color: grey; }
+
+#pinContainer {
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    position: relative; }
+
+#pinContainer2 {
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    position: relative; }
+
+#pinContainer3 {
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    position: relative; }
+
+.panel {
+    height: 100%;
+    width: 100%;
+    position: absolute; }
+
+.panel2 {
+    height: 100%;
+    width: 100%;
+    position: absolute; }
+
+.panel3 {
+    height: 100%;
+    width: 100%;
+    position: absolute; }
+
+#footer {
+    height: 100px;
+    background-color: black; }
+
+.spacer {
+    height: 600px; }
+
+.dark-brown {
+    background-color: #552f1d;
+}
+
+
+.turqoise {
+    background-color: #414864;
+}
+
+.brown {
+    background-color: #be5312;
+}
+
+.bordeaux {
+    background-color: #be1e22;
+}
+
+.yellow {
+    background-color: #c7ba37;
+}
+
+.green {
+    background-color: #606741;
+}
+
+.dark-green {
+    background-color: #537c7c;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    font-size: 60px;
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+    color: white;
+    text-align: center; }
+
+.imageRed {
+    background: red; }
+
+.imageGreen {
+    background: green; }
+
+.imageBlue {
+    background: navy; }
+
+.parallaxParent {
+    height:40vh;
+    overflow: hidden;
+}
+
+.parallaxParent > * {
+    height: 150%;
+    position: relative;
+    top: -70%;
+}
+
+.canvas {
+    max-height: 70vh;
+    top: 27%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.in-canvas {
+    max-height: 70vh;
+    top: 32.3%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.fitter img {
+    max-height: 48vh;
+}
+
+.carousel-inner img {
+    margin: 0 auto;
+}
+
+.door {
+    max-height: 70vh;
+    top: 80%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.neon {
+    width: 200px;
+    max-height: 70vh;
+    top: 45%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+hr .room-name {
+    width: 1px;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:7%;
+}

@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Brandon Grotesque Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Brandon Grotesque Light'), url('../../fonts/brandon-grotesque-light-58a8a4b38001d.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Brandon Grotesque Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Brandon Grotesque Bold Italic'), url('../../fonts/brandon-grotesque-bold-italic-58a8a48221563.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Brandon Grotesque Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Brandon Grotesque Black'), url('../../fonts/brandon-grotesque-black-58a8a3e824392.woff') format('woff');
+}
+
+.light-font {
+    font-family: "Brandon Grotesque Light";
+}
+
+.italic-font {
+    font-family: "Brandon Grotesque Bold Italic";
+}
+
+.bold-font {
+    font-family: "Brandon Grotesque Black";
+}
+
+.xbig-font {
+    font-size: 50px;
+}
+
+.big-font {
+    font-size: 40px;
+}
+
+.md-font {
+    font-size: 30px;
+
+}
+
+.sm-font {
+    font-size: 20px;
+
+}

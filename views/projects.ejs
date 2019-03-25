@@ -1,0 +1,38 @@
+<% include ./partials/header.ejs%>
+
+<% include ./partials/navbar.ejs %>
+
+
+<section class="projects" style="min-height: <%=(Math.sqrt(Math.ceil(paintSets.length/2))) * 2500%>px">
+    <div class="dark-overlay" style="min-height: <%=(Math.sqrt(Math.ceil(paintSets.length/2))) * 2500%>px">
+        <div class="head-sec text-center">
+            <h1 class="xbig-font pl-3 rellax" data-rellax-speed="4" style="margin-top: 35%">Projects</h1>
+            <img src="img/arrow-down.gif" class="rellax" data-rellax-speed="10" alt="">
+        </div>
+        <div id="projects-content" class="container">
+            <div class="row justify-content-center">
+                <% for(var i=0;i<paintSets.length;i++) { %>
+
+                <div class="col-md-4 col-sm-12 rellax" data-rellax-speed="<%=paintSets.length-i%>">
+                    <div class="card float-md-right">
+                        <img class="card-img-top" src="<%=paintSets[i].thumbnail%>" alt="Card image cap">
+                        <div class="card-body">
+                            <h2><%= paintSets[i].name%></h2>
+                            <p class="card-text"><%= paintSets[i].caption%></p>
+                        </div>
+                        <div class="card-footer bg-transparent border-secondary">
+                            <a href="/<%=paintSets[i].name%>" class="btn btn-sm float-right hvr-underline-reveal">
+                                See All The Paints
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<% include ./partials/menu.ejs%>
+
+<% include ./partials/footer.ejs%>
