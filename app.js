@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 seedDB();
 
-app.use('/dashboard',dashboardRouter);
+app.use('/dashboard',middlewares.isAuthenticated ,dashboardRouter);
 app.use('/admin', adminRouter);
 app.use('/', indexRouter);
 

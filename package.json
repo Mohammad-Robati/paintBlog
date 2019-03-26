@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "build-css": "node-sass --include-path scss public/stylesheets/scss/main.scss public/stylesheets/my_css/sass.css"
+    "start": "node app.js"
   },
   "keywords": [
     "example",
@@ -28,9 +27,5 @@
   },
   "engines": {
     "node": "8.11.4"
-  },
-  "devDependencies": {
-    "node-sass": "^4.11.0",
-    "nodemon": "^1.18.10"
   }
 }

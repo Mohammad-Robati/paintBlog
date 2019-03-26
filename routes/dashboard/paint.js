@@ -18,7 +18,7 @@ router.post('/paint',function (req,res) {
         } else {
             PaintSet.find({name: req.body.set}, function (err, foundSet) {
                 if(err) {
-                    console.log(err);
+                    res.send("database error, try again!");
                 } else {
                     if(foundSet.length===0){
                         res.send('no such set');
@@ -29,23 +29,21 @@ router.post('/paint',function (req,res) {
                             set: foundSet[0]._id
                         }, function (err, paintCreated) {
                             if (err) {
-                                console.log(err);
+                                res.send("database error, try again!");
                             } else {
                                 paintCreated.image = 'images/' + paintCreated.set + '/' + paintCreated._id + extension;
                                 paintCreated.save(function (err, savedPaint) {
-                                    if (err) console.log(err);
+                                    if (err) res.send("database error, try again!");
                                     else  console.log(savedPaint)
                                 });
-                                console.log("sa");
                                 file.mv('public/' + paintCreated.image, function (err) {
                                     if(err)
-                                        console.log(err);
+                                        res.send("file writing error, try again!");
                                 });
                                 if(!foundSet[0].thumbnail) {
                                     foundSet[0].thumbnail = paintCreated.image;
-                                    console.log(foundSet);
                                     foundSet[0].save(function (err) {
-                                        if(err) res.send(err);
+                                        if(err) res.send("database error, try again!");
                                         else res.redirect('/dashboard');
                                     });
                                 } else {
@@ -65,7 +63,7 @@ router.put('/paint/:id', function (req,res) {
         name: req.body.name,
         caption: req.body.caption
     }, {new:true} , function (err) {
-        if(err) res.send(err);
+        if(err) res.send("database error, try again!");
         else {
             res.redirect('/dashboard');
         }
@@ -74,19 +72,18 @@ router.put('/paint/:id', function (req,res) {
 
 router.delete('/paint/:id', function (req,res) {
     Paint.findOneAndDelete({_id:req.params.id}, function (err,foundPaint){
-        if(err) res.send(err);
+        if(err) res.send("database error, try again!");
         else {
             fs.unlink('public/' + foundPaint.image, function (err) {
                 if (err) throw err;
-                console.log('File deleted!');
             });
 
             PaintSet.find({_id: foundPaint.set._id},function (err,foundPaintSet) {
-                if(err) res.send(err);
+                if(err) res.send("database error, try again!");
                 else {
                     if(foundPaintSet[0].thumbnail===foundPaint.image) {
                         Paint.find({set: foundPaint.set},function (err,foundOne) {
-                            if(err) res.send(err);
+                            if(err) res.send("database error, try again!");
                             else {
                                 if(foundOne.length!==0) {
                                     foundPaintSet[0].thumbnail = foundOne[0].image;
@@ -94,7 +91,7 @@ router.delete('/paint/:id', function (req,res) {
                                     foundPaintSet[0].thumbnail = undefined;
                                 }
                                 foundPaintSet[0].save(function (err) {
-                                    if(err) res.send(err);
+                                    if(err) res.send("database error, try again!");
                                     else {
                                         res.redirect('/dashboard');
                                     }

@@ -1,3 +1,5 @@
+// Screen bug fixed in dashboard page
+
 try {
     checkForScreen();
     $(window).resize(function () {
@@ -11,10 +13,8 @@ try {
 
 }
 
-var paintSets = JSON.parse($('#paintSets').text());
-var paints = JSON.parse($('#paints').text());
 
-
+// AOS initialize
 try {
     AOS.init();
     var rellax = new Rellax('.rellax');
@@ -22,35 +22,14 @@ try {
 
 }
 
+
+// global vars
+
+var paintSets = JSON.parse($('#paintSets').text());
+var paints = JSON.parse($('#paints').text());
 var clicked = false;
 
-$(document).click(function (e) {
-    $el = $(e.target);
-    if ($el.hasClass('clickme')) {
-        if(!clicked) {
-            $(".circle_s").toggleClass('sizePlus');
-            clicked = true;
-            $(".inner").addClass('bg-danger');
-            $(".middle").removeClass('bg-danger').removeClass('animate-flicker');
-            $(".outer").removeClass('bg-danger');
-            setInterval(function () {
-                $(".sec").remove();
-                $(".nonSplash").removeClass('d-none');
-                setInterval(function () {
-                    $(".name-header").addClass('opacityPlus');
-                    setInterval(function () {
-                        $(".quote-header").addClass('opacityPlus');
-                        setInterval(function () {
-                            $('.guguls').addClass('opacityPlus');
-                        },700)
-                    }, 700)
-                },700);
-            },3500);
-        }
-    } else {
-        $(".circle_s").removeClass('sizePlus');
-    }
-});
+// hover effects in splash
 
 $(".inner").hover(function () {
     if(!clicked) {
@@ -78,7 +57,7 @@ $(".outer").hover(function () {
 
 $(".outer").mouseleave(function () {
     if(!clicked)
-    $(".outer").removeClass('bg-danger');
+        $(".outer").removeClass('bg-danger');
 });
 
 $(".inner").mouseleave(function () {
@@ -97,10 +76,45 @@ $(".middle").mouseleave(function () {
     }
 });
 
+// splash to home page transform
+
+$(document).click(function (e) {
+    $el = $(e.target);
+    if ($el.hasClass('clickme')) {
+        if(!clicked) {
+            $(".circle_s").toggleClass('sizePlus');
+            clicked = true;
+            $(".inner").addClass('bg-danger');
+            $(".middle").removeClass('bg-danger').removeClass('animate-flicker');
+            $(".outer").removeClass('bg-danger');
+            setInterval(function () {
+                $(".sec").remove();
+                $(".nonSplash").removeClass('d-none');
+                setInterval(function() {
+                    $(".after-splash-content").addClass('opacityPlus');
+                    setInterval(function () {
+                        $(".name-header").addClass('opacityPlus');
+                        setInterval(function () {
+                            $(".quote-header").addClass('opacityPlus');
+                            setInterval(function () {
+                                $('.guguls').addClass('opacityPlus');
+                            },700)
+                        }, 700)
+                    },700);
+                },700);
+
+            },3500);
+        }
+    } else {
+        $(".circle_s").removeClass('sizePlus');
+    }
+});
+
 // init controller
+
 var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
 
-// build scenes
+// build parallax scrolling
 new ScrollMagic.Scene({triggerElement: "#parallax1"})
     .setTween("#parallax1 > div", {y: "80%", ease: Linear.easeNone})
     .addTo(controller);
@@ -113,6 +127,8 @@ new ScrollMagic.Scene({triggerElement: "#parallax3"})
     .setTween("#parallax3 > div", {y: "80%", ease: Linear.easeNone})
     .addTo(controller);
 
+
+// build section wipes
 
 $(function () {
 
@@ -138,7 +154,9 @@ $(function () {
 });
 
 
-//
+// build leaf floating
+
+
 $(function () { // wait for document ready
     var flightpath = {
         entry : {
@@ -187,7 +205,8 @@ $(function () { // wait for document ready
         .setTween(tween)
         .addTo(controller);
 });
-//
+
+// build open and close door
 
 // define images
 var images = [
@@ -226,6 +245,7 @@ $("form.move input[name=duration]:radio").change(function () {
 });
 
 
+// captions for slides handling...
 
 for(let i=0;i<paintSets.length;i++) {
     let titles = [];

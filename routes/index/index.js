@@ -7,10 +7,10 @@ var Admin = require('../../moduls/admin');
 
 router.get('/', function(req, res) {
     PaintSet.find(function (err,paintSets) {
-        if(err) res.send(err);
+        if(err) res.send("database error, try again!");
         else {
             Paint.find(function (err,paints) {
-                if(err) res.send(err);
+                if(err) res.send("database error, try again!");
                 else {
                     Admin.find(function (err,admin) {
                         if(!err) {
